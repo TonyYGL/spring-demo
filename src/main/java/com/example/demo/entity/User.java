@@ -10,7 +10,7 @@ import java.util.Date;
 @Data
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "user_name")
@@ -23,7 +23,7 @@ public class User {
     private int isDel;
 
     @Column(name = "role_id")
-    private Long roleId;
+    private Integer roleId;
 
     @Column(name = "created_at")
     private Date createdAt;
