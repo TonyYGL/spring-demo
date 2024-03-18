@@ -27,7 +27,6 @@ public class UserService {
         user.setUserName(userDto.getUserName());
         user.setPassword(UUID.randomUUID() + userDto.getPassword());
         user.setRoleId(userDto.getRoleId());
-        User u = userRepository.save(user);
-        return ResponseUtil.getSuccess(u);
+        return ResponseUtil.getSuccess(userRepository.save(user));
     }
 }
