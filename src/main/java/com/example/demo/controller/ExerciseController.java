@@ -1,13 +1,12 @@
 package com.example.demo.controller;
 
+import com.example.demo.dto.ExerciseScheduleDto;
 import com.example.demo.entity.ExerciseCategory;
-import com.example.demo.repository.ExerciseCategoryRepository;
-import com.example.demo.vo.ResponseUtil;
+import com.example.demo.entity.ExerciseSchedule;
+import com.example.demo.service.ExerciseService;
 import com.example.demo.vo.ResponseVo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -16,11 +15,16 @@ import java.util.List;
 public class ExerciseController {
 
     @Autowired
-    private ExerciseCategoryRepository exerciseCategoryRepository;
+    private ExerciseService exerciseService;
 
     @GetMapping("/category/all")
-    public ResponseVo<List<ExerciseCategory>> userTest() {
-        return ResponseUtil.getSuccess(exerciseCategoryRepository.findAll());
+    public ResponseVo<List<ExerciseCategory>> findAllCategory() {
+        return exerciseService.findAllCategory();
+    }
+
+    @PostMapping("/addSchedule")
+    public ResponseVo<ExerciseSchedule> addExerciseSchedule(@RequestBody ExerciseScheduleDto exerciseScheduleDto) {
+        return exerciseService.addExerciseSchedule(exerciseScheduleDto);
     }
 
 }
