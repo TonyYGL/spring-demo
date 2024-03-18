@@ -1,7 +1,9 @@
 package com.example.demo.controller;
 
-import com.example.demo.entity.ExerciseCategory;
-import com.example.demo.repository.ExerciseCategoryRepository;
+import com.example.demo.entity.Role;
+import com.example.demo.entity.User;
+import com.example.demo.repository.RoleRepository;
+import com.example.demo.repository.UserRepository;
 import com.example.demo.vo.ResponseUtil;
 import com.example.demo.vo.ResponseVo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,15 +14,15 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/exercise")
-public class ExerciseController {
+@RequestMapping("/role")
+public class RoleController {
 
     @Autowired
-    private ExerciseCategoryRepository exerciseCategoryRepository;
+    private RoleRepository roleRepository;
 
-    @GetMapping("/category/all")
-    public ResponseVo<List<ExerciseCategory>> userTest() {
-        return ResponseUtil.getSuccess(exerciseCategoryRepository.findAll());
+    @GetMapping("/all")
+    public ResponseVo<List<Role>> userTest() {
+        return ResponseUtil.getSuccess(roleRepository.findAll());
     }
 
 }
