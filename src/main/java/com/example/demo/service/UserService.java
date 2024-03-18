@@ -18,14 +18,14 @@ public class UserService {
     private UserRepository userRepository;
 
     public ResponseVo<List<User>> findAll() {
-        List<User> users = userRepository.findAll();
-        return ResponseUtil.getSuccess(users);
+        return ResponseUtil.getSuccess(userRepository.findAll());
     }
 
     public ResponseVo<User> addUser(UserDto userDto) {
         User user = new User();
         user.setUserName(userDto.getUserName());
         user.setPassword(UUID.randomUUID() + userDto.getPassword());
+        user.setEmail(userDto.getEmail());
         user.setRoleId(userDto.getRoleId());
         return ResponseUtil.getSuccess(userRepository.save(user));
     }
